@@ -1,0 +1,132 @@
+
+<div class="search-container" ng-show="messages.length > 0">
+    <div class="form">
+      <form class="search-form">
+        <div class="input-container">
+          <input type="text" ng-model="searchQuery" placeholder="Search" class="search-input">
+          <i class="fas fa-search text-Black btn fa-1x"></i>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  <table ng-init="checkallMessages()"  class="message-table" >
+      <tr>
+        <th>Message_ID</th>
+        <th>Full name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Created_At</th>
+        <th>Show Message</th>
+        <th>Delete</th>
+        
+      </tr>
+      <div class="form-inline" ng-show="isUserConnected">
+        <tr ng-repeat="message in messages | filter:searchQuery ">
+          <td>{{ message.id_message }}</td>
+          <td>{{message.name}}</td>
+          <td>{{message.email}}
+          </td>
+
+          <td>{{message.subject}}</td>
+          <td>{{message.created_at}}</td>
+          <td>
+            <div class="show-btn" ng-click="openPopup(message)">
+                <i class="fa fa-envelope text-Black btn fa-2x"></i>
+              </div>
+              
+            </td>
+            <td>
+            <div class="form-inline">
+              <div class="delete-btn" ng-click="deleteMessage(message)"><i class="fa fa-trash text-Black btn fa-3x"></i></div>
+            </div>
+          </td>
+        </tr>
+      </div>
+    </table>
+    <br/> 
+    
+    <div ng-show="messages.length == 0" >
+      <center><p style="color: wheat;">No Message For Now</p></center>
+    </div>
+   
+    <center>
+    <a href="" ng-show="messages.length > 0" ng-click="deleteallmessages()" ><i class="fa fa-trash fa-1.8x"></i>Delete All</a>
+  </center>
+
+
+    <div class="popup" ng-show="showPopup">
+        <div class="popup-content">
+
+            <div class="icon-container" >
+              
+                <a href="" ng-click="closePopup()" ><i class="fa fa-times"></i></a>
+              
+            </div>
+            <h4>from:<b>{{ selected.email }}(<b>{{ selected.name }}</b>)</b></h4>
+           
+            <br/>
+            <h4>subject:<b>{{ selected.subject }}</b></h4>
+            
+            <p> {{ selected.message }} </p>
+            
+            <p> {{ selected.created_at }} </p>
+            
+          
+        </div>
+      </div>
+
+
+
+
+
+<style>
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.popup-content {
+  /* background-color:rgb(221, 237, 249); */
+  padding: 20px;
+  border-radius: 5px;
+  width: 600px; 
+  height: 470px; 
+  word-wrap: break-word;
+
+  transform: scale(0.94);
+  border: 2px solid transparent;
+  box-shadow: 2px 2px 8px rgba(255, 255, 255);
+  border-radius: 25px;
+  /* width: 425px; */
+  background: rgb(254, 254, 254);
+  box-sizing: border-box;
+  padding: 20px;
+}
+.popup-content h4,p{
+  font-family: Arial;
+}
+.icon-container {
+  position: relative;
+}
+
+.icon-container i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2em;
+}
+
+
+
+</style>      
+    

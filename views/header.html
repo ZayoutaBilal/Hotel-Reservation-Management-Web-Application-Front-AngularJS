@@ -1,0 +1,48 @@
+<header id="header" class="fixed-top d-flex align-items-cente">
+  &nbsp;
+    <h1 class="logo me-auto me-lg-0"><a href="index.html"><span>&nbsp;&nbsp;Hoteru</span></a></h1>
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+        <nav  id="navbar" class="navbar order-last order-lg-0" ng-init="isConnected()">
+            <a class="nav-link scrollto" class="navbar-brand  text-light" ui-sref="home()"><i class="bi bi-house-fill" aria-hidden="true"></i>&nbsp;Home</a>
+            <div  class="text-center"></div>
+            <ul>
+                <li ng-show="typeofuser === 'NUser' || typeofuser === ''"><a class="nav-link scrollto" href="#about"  class="btn text-light" ui-sref="about()"><i class="bi bi-info-circle-fill" aria-hidden="true"></i>&nbsp;About</a></li>
+                <li><a class="nav-link scrollto" href="#rooms" class="btn text-light" ui-sref="rooms()"><i class="bi bi-image-alt" ></i>&nbsp;Rooms</a></li>
+                <li ng-show="typeofuser === 'NUser' || typeofuser === ''"><a class="nav-link scrollto" href="#contact" class="btn text-light" ui-sref="contact()"><i class="bi bi-envelope-fill"></i> &nbsp;Contact</a></li>
+                
+              </ul>
+        </nav>
+               
+
+        <a href="" class="book-a-table-btn scrollto d-none d-lg-flex"  ng-click="makeReservation()">Reservation</a>
+
+      </div>
+      <div id="profileContainer" ng-show="isUserConnected">
+        <div class="ui floating dropdown labeled search icon button">
+          <a href="" class="bi bi-person-circle fs-1" id="profileMenu" data-toggle="dropdown" >
+            <i class="profil-btn" class="bi bi-list" ng-show="isUserConnected"></i></i>
+            <span class="text-light" ng-show="isUserConnected"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileMenu">
+            <a href="" class="dropdown-item" ui-sref="profile"><i class="bi bi-person"></i>&nbsp;&nbsp;{{ username }}</a>
+            <a href="" ng-show="typeofuser === 'NUser' || typeofuser === ''" class="dropdown-item" ng-show="isUserConnected" ng-click="checkReservation()"><i class="bi bi-calendar-check" aria-hidden="true"></i>&nbsp;&nbsp;Your Reservations</a>
+            <a href="" ng-show="typeofuser === 'NUser' || typeofuser === ''" class="dropdown-item" ng-show="isUserConnected" ng-click="checkpassReservation()"><i class="bi bi-clock-history"></i>&nbsp;&nbsp;Your old Reservations</a>
+            <a href="" ng-show="typeofuser === 'Respo' || typeofuser === '' || typeofuser === 'Admin'" class="dropdown-item" ng-show="isUserConnected" ng-click="checkRespoReservation()"><i class="bi bi-calendar-check" aria-hidden="true"></i>&nbsp;&nbsp;Your Reservations</a>
+            <a href="" ng-show="typeofuser === 'Respo' || typeofuser === '' || typeofuser === 'Admin'" class="dropdown-item" ng-show="isUserConnected" ng-click="checkallReservation()"><i class="bi bi-calendar2-check-fill"></i>&nbsp;&nbsp;All Reservations</a>
+            <a href="" ng-show="typeofuser === 'Respo' || typeofuser === '' || typeofuser === 'Admin'" class="dropdown-item" ng-show="isUserConnected" ng-click="checkoldReservations()"><i class="bi bi-hourglass-bottom"></i>&nbsp;&nbsp;old Reservations</a>
+            <a href="" ng-show="typeofuser === 'Respo' || typeofuser === '' || typeofuser === 'Admin'" class="dropdown-item" ng-show="isUserConnected" ng-click="AvailableRooms()"><i class="bi bi-card-checklist"></i>&nbsp;&nbsp;Available Rooms</a>
+
+            <!-- ADMIN -->
+            <a ng-show="typeofuser === 'Admin' || typeofuser === ''" class="dropdown-item" ng-show="isUserConnected"  ng-click="addrespo_page()" href=""><i class="fas fa-user">+</i>&nbsp;&nbsp;Add Receptionist</a>
+            <a ng-show="typeofuser === 'Admin' || typeofuser === ''" class="dropdown-item" ng-show="isUserConnected" ng-click="checkallUsers()" href=""><i class="fas fa-user"></i>&nbsp;&nbsp;All Accounts</a>
+            <a ng-show="typeofuser === 'Admin' || typeofuser === ''" class="dropdown-item" ng-show="isUserConnected" ng-click="checkallMessages()" href=""><i class="fa fa-envelope"></i>&nbsp;&nbsp;Messages from Clients</a>
+
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"ng-click="logout()" ng-show="isUserConnected" ><i class="bi bi-box-arrow-right"></i>&nbsp; Log out</a>
+          </div>
+        </div>
+     </div>  
+</header>
+
+

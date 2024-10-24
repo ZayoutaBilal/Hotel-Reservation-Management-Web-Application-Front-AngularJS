@@ -1,0 +1,49 @@
+<div class="row col-sm-12 col-md-12" ng-init="userinfo()">
+    <div class="col-sm-4 col-md-4"></div>
+    <div class="col-sm-4 col-md-4">
+        <div class="form">
+        <form name="myForm" class="modal-content animate" >
+
+            <div class="profile-image">
+                <center><i class="bi bi-person-circle profile"></i></center>
+            </div>
+            <div class="container">
+                <div class="form-group" >
+                    <center>
+                        <label for="username" id="username" ><b>{{username}}</b>&Tab;<a href=""  style="color: black;">
+                        <i  style="color: black;" ng-click="toggleUpdateUsername()" class="bi bi-pencil-fill"></i></a></label>  
+                        <br/>
+                        <label for="email" id="email"><b>{{email}}</b></label>
+                        <div ng-show="showUpdateUsername">
+                            <input data-ng-model="new_username" type="text" ng-pattern="/^[a-zA-Z0-9_.]{5,}$/" class="form-control" 
+                            placeholder="New Username"    name="username" required>
+                                <div class="text-center text-danger" ng-show="myForm.username.$dirty && myForm.username.$error.username"></div>
+                                <div class="text-center text-danger" ng-show="myForm.username.$dirty && myForm.username.$error.pattern">
+                                    Username is not valid,it must contain only letters and numbers</div>
+                            
+                            <div class="button-container">
+                                <span class="icon right-icon" data-ng-click="updatemyusername()" ng-disabled="myForm.$invalid">
+                                  <i class="fa fa-save">&nbsp;&nbsp;save</i>
+                                </span>
+                              
+                                <span class="icon left-icon" ng-click="toggleUpdateUsername()">
+                                  <i class="fa fa-times">&nbsp;&nbsp;cancel</i>
+                                </span>
+                              </div>
+                              
+                        <br/>                            
+                        </div>
+                    </center>
+                    
+                     <button type="button" ui-sref="update_password()">Update Password</button>   
+                     <button type="button" ng-click="deletemyaccount()">Delete my Account</button>     
+                    <button type="button" ui-sref="home()" class="cancelbtn">Cancel</button>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<!-- <div class="row  col-sm-12 col-md-12">
+  <div class="col-sm-4 col-md-4"></div>
+  <div class="col-sm-4 col-md-4">
+    <div class="form">
+      <form class="modal-content animate">
+
+          <div class="imgcontainer">
+              <img src="./imgs/hotel-icon.png" alt="Avatar" class="avatar">
+          </div>
+
+          <div class="container">
+              <div class="form-group">
+
+                  <label for="username" id="username"><b>Username</b></label>
+                  <input data-ng-model="username" type="text" class="form-control" placeholder="Enter username"
+                         name="username" required>
+
+                  <label for="psw"><b>Password</b></label>
+                  <input data-ng-model="password" type="password" class="form-control" placeholder="Enter Password"
+                         name="psw" required>
+                  <div class="text-center text-danger">{{ errMsg }}</div>
+
+                  <button type="button" data-ng-Click="signInUser()">Login</button>
+                  <button type="button"  ui-sref="signUp()">Sign Up</button>
+
+                  <label>
+                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                  </label>
+
+                  <button type="button" ui-sref="home()" class="cancelbtn">Cancel</button>
+                  <span class="psw" ui-sref="forgotPassword()">Forgot <a href="#!paas">password?</a> </span>
+
+              </div>
+          </div>
+          <br/><br/>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<div class="row col-sm-12 col-md-12">
+  <div class="col-sm-4 col-md-4"></div>
+  <div class="col-sm-4 col-md-4">
+    <div class="form">
+      <form class="modal-content animate" name="myForm" ng-submit="signInUser()" novalidate>
+
+          <div class="imgcontainer">
+              <img src="./imgs/hotel-icon.png" alt="Avatar" class="avatar">
+          </div>
+
+          <div class="container">
+              <div class="form-group">
+
+                  <label for="username" id="username"><b>Username</b></label>
+                  <input data-ng-model="username" type="text" ng-pattern="/^[a-zA-Z0-9_\.]{5,}$/" class="form-control" placeholder="Enter username"
+                         name="username" required>
+                  <div class="text-center text-danger" ng-show="myForm.username.$dirty && myForm.username.$error.required">
+                      Username is required.
+                  </div>
+                  <div class="text-center text-danger" ng-show="myForm.username.$dirty && myForm.username.$error.pattern">
+                      Username is not valid.
+                  </div>
+
+                  <label for="psw"><b>Password</b></label>
+                  <input data-ng-model="password" type="password" class="form-control" placeholder="Enter Password"
+                         name="psw" required>
+                  <div class="text-center text-danger">{{ errMsg }}</div>
+
+                  <button type="submit" ng-style="errMsg ? {'opacity': '0.5'} : {}" ng-disabled="myForm.$invalid">Login</button>
+                  <button type="button" ui-sref="signUp()">Sign Up</button>
+
+                  <label>
+                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                  </label>
+
+                  <button type="button" ui-sref="home()" class="cancelbtn">Cancel</button>
+                  <span class="psw" ng-click="forgotPassword()">Forgot <a href="#!paas">password?</a> </span>
+
+              </div>
+          </div>
+          <br/><br/>
+      </form>
+    </div>
+  </div>
+</div>

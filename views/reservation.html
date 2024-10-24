@@ -1,0 +1,53 @@
+<div class="row col-sm-12 col-md-12">
+    <div class="col-sm-4 col-md-4"></div>
+    <div class="col-sm-4 col-md-4">
+        <div class="form">
+        <form name="myForm" class="modal-content animate">
+
+            <div class="imgcontainer">
+                <img src="./imgs/hotel-icon.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <div class="form-group">
+                    <label for="fullname" id="fullname"><b>Fullname</b></label>
+                    <input data-ng-model="fullname" type="text" placeholder="Enter fullname" name="fullname" required><br>
+                          
+                    <label for="phone"><b>Phone</b></label>
+                    <input data-ng-model="phone" type="text"  placeholder="Enter phone"  name="phone" required><br>
+                    
+                    <label for="type-chambre" ><b>Room Type   :</b></label>
+
+                    <select id="type_chambre" name="type_chambre" data-ng-model="type_chambre" required>
+                        <option value="">-- Select Room Type --</option>
+                        <option value="Chambre simple">Simple Room</option>
+                        <option value="Chambre Accessible">Accessible Room</option>
+                        <option value="Chambre Double">Double Room</option>
+                        <option value="Chambre Twin">Twin Room</option>
+                        <option value="Chambre triple">Triple Room</option>
+                        <option value="Chambre Suite">Suite Room</option>
+                      </select>
+                      <br><br>
+
+                    <label for="date_debut" id="date_debut" >Start Date  :</label>
+                    <input type="date" ng-model="date_debut" min="{{minStartDate}}" max="{{maxStartDate}}" required><br>
+                    <span ng-show="startDateError" class="text-center text-danger">{{startDateError}}</span><br>
+                
+                    <label for="date_fin" id="date_fin" >End Date   :</label>
+                    <input type="date" ng-model="date_fin" min="{{minStartDate}}" max="{{maxEndDate}}" required></br></br>
+                    <span ng-show="endDateError" class="text-center text-danger" >{{endDateError}}</span><br>
+
+                            
+                    <button class="transparent-button" ng-class="{'transparent-button': myForm.$invalid}" 
+                    ng-disabled="myForm.$invalid" data-ng-Click="Reservation()">BOOK</button>
+
+                    <button type="button" ng-click="goBack()" class="cancelbtn">Cancel</button>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    </div>
+</div>

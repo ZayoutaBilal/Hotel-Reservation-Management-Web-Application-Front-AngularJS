@@ -1,0 +1,71 @@
+<div class="row col-sm-12 col-md-12">
+    <div class="col-sm-4 col-md-4"></div>
+    <div class="col-sm-4 col-md-4">
+        <div class="form">
+            <form name="myForm" class="modal-content animate" ng-submit="SendConfirmCode()" novalidate>
+
+                <div class="imgcontainer">
+                    <img src="./imgs/hotel-icon.png" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <div class="form-group">
+                        <label for="username" id="username"><b>Username</b></label>
+                        <input data-ng-model="username" type="text" ng-pattern="/^[a-zA-Z0-9_\.]{5,}$/" class="form-control" placeholder="Enter Username"
+                            name="username" required>
+                        <div class="text-center text-danger" ng-show="myForm.username.$dirty && myForm.username.$error.username">
+                            Username is required.
+                        </div>
+                        <div class="text-center text-danger" ng-show="myForm.username.$dirty && myForm.username.$error.pattern">
+                            username must be at least 5 characters long and can only contain uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), underscores (_), and periods (.)
+                        </div>
+
+                        
+                            <label for="email"><b>Email</b></label>
+                            <input data-ng-model="email" type="email" ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
+                                class="form-control" placeholder="Enter Email" name="email" required>
+                            <div class="text-center text-danger" ng-show="myForm.email.$dirty && myForm.email.$error.required">
+                                Email is required.
+                            </div>
+                            <div class="text-center text-danger" ng-show="myForm.email.$dirty && myForm.email.$error.pattern">
+                                Email is not valid.
+                            </div>
+
+
+                        <label for="psw"><b>Password</b></label>
+                        <input data-ng-model="password" type="{{ showPassword ? 'text' : 'password' }}" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/" class="form-control" placeholder="Enter Password"
+                            name="psw" required>
+                        <div class="text-center text-danger" ng-show="myForm.psw.$error.pattern">
+                            The password must be at least 8 characters long. 
+                            It must contain at least one lowercase letter (a-z), 
+                            one uppercase letter (A-Z), 
+                            one digit (0-9), 
+                            and one special character (!@#$%^&*)
+                        </div>
+
+                        <label for="confirmPsw"><b>Confirm Password</b></label>
+                        <input data-ng-model="confirmPassword" type="{{ showPassword ? 'text' : 'password' }}" class="form-control" placeholder="Confirm Password"
+                            name="confirmPsw" required>
+                        <div class="text-center text-danger" ng-show="myForm.confirmPsw.$dirty && (myForm.confirmPsw.$error.required || confirmPassword !== password)">
+                            Password confirmation does not match.
+                        </div>
+
+                        <button class="transparent-button"
+                        ng-class="{'transparent-button': myForm.$invalid}"
+                        ng-disabled="myForm.$invalid || myForm.confirmPsw.$error.required || confirmPassword !== password">
+                        Create Account
+                    </button>
+
+                        <button ui-sref="signIn()">Log In</button>
+
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+
+                        <button type="button" ui-sref="home()" class="cancelbtn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

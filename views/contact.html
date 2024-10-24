@@ -1,0 +1,93 @@
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Contact</h2>
+      <p>Contact</p>
+    </div>
+  </div>
+
+  <div data-aos="fade-up">
+    <iframe style="display: block;border:0; width: 80%; height: 350px;margin: auto;" src="https://maps.google.com/maps?q=Hotel&t=&z=16&ie=UTF8&iwloc=&output=embed" ></iframe>
+  </div>
+
+  <div class="container" data-aos="fade-up">
+    <div class="before">
+
+    <div class="row mt-5">
+
+      <div class="col-lg-4">
+        <div class="info">
+          <div class="address">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Location:</h4>
+            <p>Any location</p>
+          </div>
+
+          <div class="open-hours">
+            <i class="bi bi-clock"></i>
+            <h4>Open Hours:</h4>
+            <p>
+              24/7<br>
+            </p>
+          </div>
+
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>info@Hoteru.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="bi bi-phone"></i>
+            <h4>Call:</h4>
+            <p>+00 34</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-8 mt-5 mt-lg-0" ng-controller="MyController">
+
+        <form  ng-submit="submitForm()" role="form" class="php-email-form">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Full Name" ng-model="formData.name" ng-required="true">
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" ng-model="formData.email" ng-required="true">
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" ng-model="formData.subject" ng-required="true">
+          </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="8" placeholder="Message" ng-model="formData.message" ng-required="true"></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            
+          </div> 
+          <div class="text-center"><button type="submit" ng-submit="submitForm()">Send Message</button></div>
+          
+        </form>
+        <div class="sent-messageSuccess" ng-show="showSuccessMessage">Your message has been sent!</div>
+        <div class="sent-messageErrors" ng-show="showErrorsMessage">An error occurred while sending your message. Please try again later.</div>
+        <style>
+          .sent-messageSuccess{
+            color: rgb(92, 239, 90);
+          }
+          .sent-messageErrors{
+            color: rgb(241, 16, 16);
+          }
+        </style>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- End Contact Section -->

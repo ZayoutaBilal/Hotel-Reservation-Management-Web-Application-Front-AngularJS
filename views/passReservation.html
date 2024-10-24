@@ -1,0 +1,21 @@
+<table ng-init="checkpassReservation()"  class="reservation-table">
+    <tr>
+      <th>Full Name</th>
+      <th>Phone</th>
+      <th>Room Type</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Total</th>
+    </tr>
+    <div class="form-inline" ng-show="isUserConnected">
+      <tr ng-repeat="reservation in reservations">
+        <td>{{ reservation.fullname }}</td>
+        <td>{{ reservation.phone }}</td>
+        <td>{{ reservation.type_chambre }}</td>
+        <td>{{ reservation.date_debut }}</td>
+        <td>{{ reservation.date_fin }}</td>
+        <td>{{ reservation.total }}&nbsp;DH</td>
+      </tr>
+    </div>
+  </table>
+  

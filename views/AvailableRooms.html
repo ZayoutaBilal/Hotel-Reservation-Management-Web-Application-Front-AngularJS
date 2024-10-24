@@ -1,0 +1,24 @@
+<div class="search-container">
+    <div class="form">
+      <form class="search-form">
+        <div class="input-container">
+          <input type="text" ng-model="searchQuery" placeholder="Search" class="search-input">
+          <i class="bi bi-search fa-search"></i>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  <table ng-init="AvailableRooms()"  class="reservation-table">
+    <tr>
+      <th>Room Type</th>
+      <th>Chambre</th>
+    </tr>
+    <div class="form-inline" ng-show="isUserConnected">
+      <tr ng-repeat="reservation in reservations  | filter:searchQuery ">
+        <td>{{ reservation.type_chambre }}</td>
+        <td>{{ reservation.id_chambre }}</td>
+      </tr>
+    </div>
+  </table>

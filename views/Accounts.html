@@ -1,0 +1,136 @@
+
+<div class="search-container">
+    <div class="form">
+      <form class="search-form">
+        <div class="input-container">
+          <input type="text" ng-model="searchQuery" placeholder="Search" class="search-input">
+          <i class="fas fa-search text-Black btn fa-1x"></i>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  <table ng-init="checkallUsers()"  class="user-table" name="user_table">
+      <tr>
+        <th>User_ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <!-- <th>Password</th> -->
+        <th>Type of User</th>
+        <th>Update</th>
+        <th>Deletel</th>
+        
+      </tr>
+      
+        <tr ng-repeat="user in users | filter:searchQuery " >
+          <td>{{ user.id_user }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <!-- <td>{{ user.password }}</td> -->
+          <td>{{ user.typeofuser }}</td>
+         
+          <td> 
+            
+            <div class="form-inline">
+              <div class="edit-btn" ng-click="openPopupUpdate(user)" ><i class="fas fa-edit text-Black btn fa-3x"></i></div>
+            </div>
+          </td>
+          <td>
+            <div class="form-inline">
+              <div class="delete-btn" ng-click="deleteUser(user)"><i class="fa fa-trash text-Black btn fa-3x"></i></div>
+            </div>
+          </td>
+        </tr>
+        
+    </table>
+
+     
+
+      <div class="popup" ng-show="showPopup">
+        <div class="popup-content">
+
+            <div class="icon-container" >
+                
+                <a href="" ng-click="closePopupUpdate()" ><i class="fa fa-times"></i></a></br>
+                <form name="myForm">
+                  <label for="username" id="username"><b>Username:</b></label>
+                  <input type="text" class="form-control" ng-model="selected.username" name="username" ng-pattern="/^[a-zA-Z0-9_\.]{5,}$/" required >
+                  <div class="text-center text-danger" ng-show="myForm.username.$dirty && myForm.username.$error.required">Username is required</div>
+                  <div class="text-center text-danger" ng-show="myForm.username.$dirty && myForm.username.$error.pattern">Username is not valid.</div>
+
+                  <label for="email"><b>Email:</b></label>
+                  <input type="email" class="form-control" ng-model="selected.email" name="email" ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/" required>
+                  <div class="text-center text-danger" ng-show="myForm.email.$dirty && myForm.email.$error.required">Email is required.</div>
+                  <div class="text-center text-danger" ng-show="myForm.email.$dirty && myForm.email.$error.pattern">Email is not valid.</div>
+
+                  <label for="psw"><b>Password:</b></label>
+                <input ng-model="selected.password" class="form-control" type="{{ showPassword ? 'text' : 'password' }}" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/" 
+                name="psw" required>
+                <div class="text-center text-danger" ng-show="myForm.psw.$dirty && myForm.psw.$error.required">Email is required.</div>
+                <div class="text-center text-danger" ng-show="myForm.psw.$error.pattern">
+                The password must be strong</div>
+
+                <label for="psw"><b>Type of User:</b></label>
+                <select id="typeofuser" name="typeofuser" data-ng-model="selected.typeofuser" required>
+                  <option value="NUser">NUser</option>
+                  <option value="Respo">Respo</option>
+                  <option value="Admin">Admin</option>
+                </select>
+
+                <button class="transparent-button" ng-class="{'transparent-button': myForm.$invalid}" 
+                      ng-disabled="myForm.$invalid" data-ng-Click="updateUser(selected)">Update</button>
+            </form>
+          
+        </div>
+      </div>
+      </div>
+      
+      <style>
+        .popup {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.0);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          
+        }
+        
+        .popup-content {
+          /* background-color:rgb(221, 237, 249); */
+          padding: 20px;
+          border-radius: 5px;
+          display: flex;
+          word-wrap: break-word;
+
+          transform: scale(0.94);
+          border: 2px solid transparent;
+          box-shadow: 2px 2px 8px rgba(255, 255, 255);
+          border-radius: 25px;
+          width: 425px;
+          background: rgb(254, 254, 254);
+          box-sizing: border-box;
+          padding: 20px;
+        }
+        
+        .icon-container {
+          position: relative;
+          width: 400px; 
+
+        }
+        
+        .icon-container i {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 2em;
+        }
+        
+        
+        
+        </style>    

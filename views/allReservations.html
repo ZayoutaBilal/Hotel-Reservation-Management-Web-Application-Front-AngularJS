@@ -1,0 +1,58 @@
+<!-- 
+<div class="search-container">
+    <div class="form">
+  <form class="search-form" >
+    <input type="text" ng-model="searchQuery" placeholder="Search" class="search-input">
+    <i class="fas fa-search text-Black btn fa-1x"></i>
+  </form>
+</div>
+</div> -->
+<div class="search-container">
+  <div class="form">
+    <form class="search-form">
+      <div class="input-container">
+        <input type="text" ng-model="searchQuery" placeholder="Search" class="search-input">
+        <i class="bi bi-search fa-search"></i>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<table ng-init="checkallReservation()"  class="reservation-table">
+    <tr>
+      <th>Resevation_ID</th>
+      <th>Full Name</th>
+      <th>Phone</th>
+      <th>Room Type</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Chambre</th>
+      <th>Total</th>
+      <th>Download the receipt</th>
+      <th>Delete</th>
+    </tr>
+    <div class="form-inline" ng-show="isUserConnected">
+      <tr ng-repeat="reservation in reservations | filter:searchQuery ">
+        <td>{{ reservation.id_reservation }}</td>
+        <td>{{ reservation.fullname }}</td>
+        <td>{{ reservation.phone }}</td>
+        <td>{{ reservation.type_chambre }}</td>
+        <td>{{ reservation.date_debut }}</td>
+        <td>{{ reservation.date_fin }}</td>
+        <td>{{ reservation.id_chambre }}</td>
+        <td>{{ reservation.total }}&nbsp;DH</td>
+        <td>
+        <div class="form-inline">
+          <a href="" ><div class="delete-btn" data-ng-click="downloadFacteur(reservation.id_reservation)"><i class="bi bi-download"></i></div></a>
+        </div>
+        </td>
+        <td>
+          <div class="form-inline">
+            <a href="" ><div class="delete-btn" ng-click="deleteReservation(reservation)"><i class="bi bi-trash-fill trash-icon"></i></div></a>
+          </div>
+        </td>
+        
+      </tr>
+    </div>
+  </table>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign IN</title>
+</head>
+<body>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center"  ng-init="isConnected()">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+      <div class="row">
+        <div class="col-lg-8">
+          <h1>Welcome to <a><span>Hoteru</span></a></h1>
+          <h2>Discover the perfect balance of luxury and comfort at our hotel </br>- your home away from home!</h2>
+
+          <div class="btns">
+            <!--<a ui-sref="" class="form-inline">Our rooms</a>-->
+            <div class="form-inline" ng-show="!isUserConnected">
+                <a class="book-a-table-btn scrollto d-none d-lg-flex" ui-sref="signIn()" class="btn text-light">Sign In</a>
+                <a class="book-a-table-btn scrollto d-none d-lg-flex" ui-sref="signUp()" class="btn text-light">Sign Up </a>
+            </div>
+          </div>
+        </div>
+        <!--
+        <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+          <a href="https://www.youtube.com/watch?v=u6BOC7CDUTQ" class="glightbox play-btn"></a>
+        </div>
+        -->
+
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+</body>
+</html>

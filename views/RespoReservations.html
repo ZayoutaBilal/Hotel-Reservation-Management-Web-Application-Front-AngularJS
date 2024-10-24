@@ -1,0 +1,50 @@
+<table ng-init="checkRespoReservation()" class="reservation-table">
+    <tr>
+      <th>ID Reservation</th>
+      <th>Full Name</th>
+      <th>Phone</th>
+      <th>Room Type</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>ID Chambre</th>
+      <th>Total</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <div class="form-inline" ng-show="isUserConnected">
+      <tr ng-repeat="reservation in reservations">
+        <td>{{ reservation.id_reservation }}</td>
+        <td><input type="text" ng-model="reservation.fullname"></td>
+        <td><input type="text" ng-model="reservation.phone"></td>
+        <td>
+          <select id="type_chambre" name="type_chambre" data-ng-model="reservation.type_chambre" required>
+            <option value="Chambre simple">Simple Room</option>
+            <option value="Chambre Accessible">Accessible Room</option>
+            <option value="Chambre Double">Double Room</option>
+            <option value="Chambre Twin">Twin Room</option>
+            <option value="Chambre triple">Triple Room</option>
+            <option value="Chambre Suite">Suite Room</option>
+          </select>
+        </td>
+        <td for="date_debut"><input type="date" min="{{minStartDate}}" max="{{maxStartDate}}" ng-model="reservation.date_debut"></td>
+        <td><input type="date" min="{{minStartDate}}" max="{{maxEndDate}}" ng-model="reservation.date_fin"></td>
+        <td>{{ reservation.id_chambre }}</td>
+       <td>{{ reservation.total }}&nbsp;DH</td>
+        <td>
+          <div class="form-inline">
+            <div class="edit-btn"  ng-click="updateReservation(reservation)"><i class="bi bi-pencil-fill edit-icon"></i></div>
+          </div>
+        </td>
+        <td>
+          <div class="form-inline">
+            <div class="delete-btn" ng-click="deleteReservation(reservation)"><i class="bi bi-trash-fill trash-icon"></i></div>
+          </div>
+        </td>
+      </tr>
+    </div>
+  </table>
+  <div class="form text-center">
+    <span ng-show="startDateError" class="text-danger">{{startDateError}}</span>
+    <span ng-show="endDateError" class="text-danger">{{endDateError}}</span>
+  </div>
+  
